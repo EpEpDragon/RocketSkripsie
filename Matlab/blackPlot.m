@@ -15,6 +15,9 @@ function blackPlot(x_data,y_data, x_data_fine, y_data_fine,lables, fontsize,coor
     for i = 1:length(lables)
         text(coord_x(i), coord_y(i),lables{i},'FontSize',fontsize)
     end
+    set(gca,'LooseInset',get(gca,'TightInset'));
+    set(gcf, 'Position',  [100, 100, 500, 500])    
     hold off
 end
+
 
