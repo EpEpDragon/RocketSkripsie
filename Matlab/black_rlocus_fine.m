@@ -9,7 +9,7 @@ function black_rlocus_fine(sys, P_cl)
     P_cl = [real(P_cl), imag(P_cl)];
     figure
     
-    xy = -10:20:10;
+    xy = -100:200:100;
     plot(xy,[0,0],':', 'Color', 'black')
     hold on
     plot([0,0],xy,':', 'Color', 'black')
