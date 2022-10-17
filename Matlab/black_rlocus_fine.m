@@ -1,9 +1,8 @@
 function black_rlocus_fine(sys, P_cl)
-    k = 0:0.01:500;
+    k = 0:0.0001:100;
     R = rlocus(sys,k);
-    P = pole(sys);
+    [P,Z] = pzmap(sys);
     P = [real(P), imag(P)];
-    Z = zero(sys);
     Z = [real(Z), imag(Z)];
     
     P_cl = [real(P_cl), imag(P_cl)];
@@ -14,9 +13,9 @@ function black_rlocus_fine(sys, P_cl)
     hold on
     plot([0,0],xy,':', 'Color', 'black')
     
-    th = 0:pi/100:2*pi;
-    f = 1 * exp(1j*th);
-    plot(real(f), imag(f),':', 'Color', 'black');
+%     th = 0:pi/100:2*pi;
+%     f = 1 * exp(1j*th);
+%     plot(real(f), imag(f),':', 'Color', 'black');
     
     
     for m = 1:numel(R)/length(R)
@@ -35,7 +34,7 @@ function black_rlocus_fine(sys, P_cl)
     axis([-3.5,1.5, -2.5,2.5])
     box on
     set(gca,'LooseInset',get(gca,'TightInset'));
-    set(gcf, 'Position',  [100, 100, 500, 500])
+    set(gcf, 'Position',  [100, 100, 200, 200])
     hold off
 end
 
