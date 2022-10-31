@@ -5,8 +5,8 @@ function black_rlocus(sys, P_cl)
     Z = [real(Z), imag(Z)];
     
     P_cl = [real(P_cl), imag(P_cl)];
-    figure
     
+    figure    
     xy = -100:200:100;
     plot(xy,[0,0],':', 'Color', 'black')
     hold on

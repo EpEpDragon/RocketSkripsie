@@ -85,3 +85,21 @@ c_pos = [0, 0, 0, 1, 0, 0, 0];
 Phi_pos=inv(s*eye(7)-A_vel);
 G_pos=c_pos*Phi_pos*b_vel;
 pretty(simplify(G_pos))
+
+syms rho v Ctau_max A_rocket
+A = [-1/t_V,  0, 0;
+      cm/I_yz_lookup, 0, (0.5*rho*A_rocket*v^2*Ctau_max/10)/I_yz_lookup;
+      0, 1, 0];
+b = [1/t_V; 0; 0];
+c = [0,0,1];
+% Rate controller
+c_rate=[0,1,0];
+A_rate = [A-b*KpRA*c_rate, b*KiRA;
+          -c_rate              , 0];
+b_rate = [b*KpRA;1];
+% Angle controller
+c_ang = [0,0,1,0];
+A_ang = A_rate - b_rate*KpAN*c_ang;
+b_ang = b_rate*(KpAN/T_max);
+pretty(simplify(A_ang))
+pretty(simplify(b_ang))
